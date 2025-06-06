@@ -6,7 +6,7 @@ public class PhysicalBook extends Book {
     public PhysicalBook(String title, int publicationYear, Author author, int numPages) {
         super(title, publicationYear, author);
         this.numPages = numPages;
-    }
+    } 
 
     public String viewDetails() {
         return "\nLivro Fisico - " + super.viewDetails() + ", Paginas: " + this.numPages;

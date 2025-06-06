@@ -1,34 +1,31 @@
 package com.elchukito;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.elchukito.enums.*;
 import com.elchukito.models.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Book> library = new ArrayList<>();
+        ArrayList<Book> library = new ArrayList<>();
 
-        List<Author> authorList = new ArrayList<>();
-        authorList.add(new Author("Gil Eduardo", "Brasil"));
-        authorList.add(new Author("Queridao da Silva", "Georgia"));
-        authorList.add(new Author("Guilherme Dias Borille", "USA"));
-        authorList.add(new Author("Kayure Skylab", "Lituania"));
+        ArrayList<Author> authorList = new ArrayList<>();
+        authorList.add(new Author("Gil Eduardo", EnumNacion.BRASILEIRO));
+        authorList.add(new Author("Queridao da Silva", EnumNacion.AMERICANO));
+        authorList.add(new Author("Guilherme Dias Borille", EnumNacion.GEORGIANO));
+        authorList.add(new Author("Kayure Skylab", EnumNacion.LITUANO));
 
-        PhysicalBook physicalBook1 = new PhysicalBook("Python para iniciantes", 2016, authorList.get(0), 124);
-        PhysicalBook physicalBook2 = new PhysicalBook("Kamasutra", 2001, authorList.get(2), 269);
-    
-        Ebook ebook1 = new Ebook("13 Reasons why", 2010, authorList.get(1), 1.3);
-        Ebook ebook2 = new Ebook("How to produce in fl", 2021, authorList.get(3), 25.67);
-
-        library.add(physicalBook1);
-        library.add(physicalBook2);
-        library.add(ebook1);
-        library.add(ebook2);
-
-        library.get(0).viewDetails();
-        library.get(1).viewDetails();
-        library.get(2).viewDetails();
-        library.get(3).viewDetails();
+        library.addAll(Arrays.asList(
+            new PhysicalBook("Python para iniciantes", 2016, authorList.get(0), 124),
+            new PhysicalBook("Kamasutra", 2001, authorList.get(2), 269),
+            new Ebook("13 Reasons why", 2010, authorList.get(1), 1.3),
+            new Ebook("How to produce in fl", 2021, authorList.get(3), 25.67)
+        ));
+        
+        for (Book book : library) {
+            System.out.println(book.viewDetails());
+        }
     }
 }
